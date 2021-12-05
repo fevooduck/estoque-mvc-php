@@ -1,0 +1,16 @@
+Tabelas
+
+users
+  - id
+  - user_name
+  - user_pass
+  - user_token
+
+products
+  - id
+  - code_bar
+  - name
+  - price
+  - quantity
+  - min_quantity
+

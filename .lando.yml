@@ -1,0 +1,23 @@
+name: estoque-mvc
+recipe: lamp
+config:
+  webroot: www
+  php: 7.4
+  database: mariadb
+  xdebug: true
+  composer_version: '2.0.7'
+services:
+  mariadb:
+    type: mariadb
+    image: mariadb:10.3
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: '123456'
+      MYSQL_DATABASE: 'estoque'
+      MYSQL_USER: 'estoque'
+      MYSQL_PASSWORD: '123456'
+  pma:
+    type: phpmyadmin
+    host:
+      - mariadb
