@@ -7,10 +7,10 @@ global $db;
 $config = array();
 if(ENVIRONMENT == 'development') {
 	define("BASE_URL", "http://estoque-mvc.lndo.site/");
-	$config['dbname'] = 'lemp';
+	$config['dbname'] = 'lamp';
 	$config['host'] = 'database';
-	$config['dbuser'] = 'lemp';
-	$config['dbpass'] = 'lemp';
+	$config['dbuser'] = 'lamp';
+	$config['dbpass'] = 'lamp';
 } else {
 	define("BASE_URL", "http://localhost/estoque/");
 	$config['dbname'] = 'nova_loja';
