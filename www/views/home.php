@@ -1,4 +1,4 @@
-<a href="<?php echo BASE_URL; ?>/home/add">Adicionar Produto</a>
+<a href="<?php echo BASE_URL; ?>home/add">Adicionar Produto</a>
 
 <hr>
 

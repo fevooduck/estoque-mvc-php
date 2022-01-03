@@ -24,6 +24,20 @@ class homeController extends Controller {
 
   public function add() {
     $data = array();
+    $p = new Products();
+
+    if(!empty($_POST['name'])) {
+      $name = $_POST['name'];
+      $price = $_POST['price'];
+      $cust_price = $_POST['cust_price'];
+      $quantity = $_POST['quantity'];
+      $min_quantity = $_POST['min_quantity'];
+
+      $p->addProduct($name, $price, $cust_price, $quantity, $min_quantity);
+
+      header("Location: ".BASE_URL);
+      exit;
+    }
     
     $this->loadTemplate('add', $data);
 
