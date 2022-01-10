@@ -17,7 +17,13 @@ class homeController extends Controller {
     $data = array();
     $p = new Products();
 
-    $data['products_list'] = $p->getProducts();
+    $s = "";
+
+    if(!empty($_GET['busca'])) {
+      $s = $_GET['busca'];
+    }
+
+    $data['products_list'] = $p->getProducts($s);
     
     $this->loadTemplate('home', $data);
   }
@@ -40,6 +46,29 @@ class homeController extends Controller {
     }
     
     $this->loadTemplate('add', $data);
+
+  }
+
+  public function edit($id) {
+    $data = array();
+    $p = new Products();
+
+    if(!empty($_POST['name'])) {
+      $name = $_POST['name'];
+      $price = $_POST['price'];
+      $cust_price = $_POST['cust_price'];
+      $quantity = $_POST['quantity'];
+      $min_quantity = $_POST['min_quantity'];
+
+      $p->editProduct($id, $name, $price, $cust_price, $quantity, $min_quantity);
+
+      header("Location: ".BASE_URL);
+      exit;
+    }
+
+    $data['info'] = $p->getProduct($id);
+    
+    $this->loadTemplate('edit', $data);
 
   }
   

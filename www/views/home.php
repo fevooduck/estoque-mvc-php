@@ -1,4 +1,13 @@
 <a href="<?php echo BASE_URL; ?>home/add">Adicionar Produto</a>
+<br>
+
+<a href="<?php echo BASE_URL; ?>relatorio">Relatório</a>
+
+<hr>
+
+<form action="" method="get">
+  <input type="text" name="busca" id="busca" placeholder="Pesquisar" value="<?php echo (!empty($_GET['busca']))?$_GET['busca']:""; ?>" />
+</form>
 
 <hr>
 
@@ -9,6 +18,7 @@
     <th>Preço Unitário</th>
     <th>Preço Compra</th>
     <th>Quantidade</th>
+    <th>Quantidade mínima</th>
     <th>Ações</th>
   </tr>
   <?php foreach ($products_list as $product): ?>
@@ -18,10 +28,14 @@
       <td>R$ <?php echo number_format($product['price'], 2, ",", "."); ?></td>
       <td>R$ <?php echo number_format($product['cust_price'], 2, ",", "."); ?></td>
       <td><?php echo $product['quantity']; ?></td>
+      <td><?php echo $product['min_quantity']; ?></td>
       <td>
-        <a href="<?php echo BASE_URL; ?>products/edit/<?php echo $product['id']; ?>">[Editar]</a>
-        <a href="<?php echo BASE_URL; ?>products/delete/<?php echo $product['id']; ?>">[Excluir]</a>
+        <a href="<?php echo BASE_URL; ?>home/edit/<?php echo $product['id']; ?>">[Editar]</a>
       </td>
     </tr>
   <?php endforeach; ?>
 </table>
+
+<script type="text/javascript">
+  document.querySelector('#busca').focus();
+</script>
