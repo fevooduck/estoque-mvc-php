@@ -1,11 +1,5 @@
 <h1>Editar produto</h1>
 
-<br>
-
-<a href="<?php echo BASE_URL; ?>">Voltar</a>
-
-<br>
-
 <form action="" method="post">
     <div class="form-group">
         <label for="name">Nome do Produto</label>

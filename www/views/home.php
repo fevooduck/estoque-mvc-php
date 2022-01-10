@@ -1,8 +1,3 @@
-<a href="<?php echo BASE_URL; ?>home/add">Adicionar Produto</a>
-<br>
-
-<a href="<?php echo BASE_URL; ?>relatorio">Relatório</a>
-
 <hr>
 
 <form action="" method="get">

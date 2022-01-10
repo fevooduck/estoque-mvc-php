@@ -14,7 +14,13 @@ class homeController extends Controller {
   }
   
   public function index() {
-    $data = array();
+    $data = array(
+      'menu' => array(
+        BASE_URL.'home/add' => 'Adicionar Produto',
+        BASE_URL.'relatorio' => 'Relatório',
+        BASE_URL.'login/sair' => 'Sair'
+      ),
+    );
     $p = new Products();
 
     $s = "";
@@ -29,7 +35,13 @@ class homeController extends Controller {
   }
 
   public function add() {
-    $data = array();
+    $data = array(
+      'menu' => array(
+        BASE_URL => 'Voltar',
+        BASE_URL.'relatorio' => 'Relatório',
+        BASE_URL.'login/sair' => 'Sair'
+      ),
+    );
     $p = new Products();
 
     if(!empty($_POST['name'])) {
@@ -49,13 +61,36 @@ class homeController extends Controller {
 
   }
 
+  private function filter_post_money($t){
+    $price = str_replace(",", ".", $t);
+    $price = str_replace(".", "", $price);
+    $price = filter_var($price, FILTER_VALIDATE_FLOAT);
+    return $price;
+  }
+
   public function edit($id) {
-    $data = array();
+    $data = array(
+      'menu' => array(
+        BASE_URL => 'Adicionar Produto',
+        BASE_URL.'relatorio' => 'Relatório',
+        BASE_URL => 'Voltar',
+        BASE_URL.'login/sair' => 'Sair'
+      ),
+    );
     $p = new Products();
 
     if(!empty($_POST['name'])) {
-      $name = $_POST['name'];
-      $price = $_POST['price'];
+      $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+      $price = filter_input(INPUT_POST, 'price');
+      $price = $this->filter_post_money($price);
+      $cust_price = filter_input(INPUT_POST, 'cust_price');
+      $cust_price = $this->filter_post_money($cust_price);
+      $quantity = filter_input(INPUT_POST, 'quantity');
+      $quantity = $this->
+      $min_quantity = filter_input(INPUT_POST, 'min_quantity');
+
+      // $name = $_POST['name'];
+      // $price = $_POST['price'];
       $cust_price = $_POST['cust_price'];
       $quantity = $_POST['quantity'];
       $min_quantity = $_POST['min_quantity'];
